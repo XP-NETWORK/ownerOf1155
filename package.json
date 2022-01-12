@@ -1,0 +1,36 @@
+{
+  "name": "validator",
+  "version": "\\",
+  "main": "index.js",
+  "author": "AlexeyA",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./lib/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.8",
+    "@types/puppeteer": "^5.4.4",
+    "abi-decoder": "^2.4.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.6",
+    "node-cron": "^3.0.0",
+    "typescript": "^4.2.4",
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0",
+    "vimeo": "^2.1.1",
+    "web3": "^1.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0"
+  }
+}
