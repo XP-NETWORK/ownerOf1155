@@ -31,8 +31,4 @@ const web3 = new Web3(config.rpc);
   app.listen(3100, () => {
     console.log(`Listening on port ${process.env.PORT}`);
   });
-
-
-  isOwner('ddd', web3)
-
 })();

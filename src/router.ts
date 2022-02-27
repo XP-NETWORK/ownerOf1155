@@ -22,14 +22,12 @@ export const txRouter = (web3:Web3): Router => {
           if (message && signature) {
     
             let account = web3.eth.accounts.recover(message, signature);
-            console.log(account)
-            //contract = new w.eth.Contract(config.abi, config.address);
-            //const owner = await contract.methods.ownerOf(config.token).call();
+            console.log(account);
     
-            if (isOwner(account, web3)) {
-                res.redirect('/public/file.txt')
+            if (await isOwner(account, web3)) {
+                res.sendFile('file.txt', { root: require('path').join(__dirname, '../public') });
             } else {
-              res.redirect('/')
+                res.status(301).send('redirect')
             }
            
           }

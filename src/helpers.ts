@@ -1,14 +1,13 @@
 import Web3 from "web3";
 var fs = require('fs');
 import config from "./config";
-const token = config.token
 const contractAddr = config.contractAddress
+const parsed= JSON.parse(fs.readFileSync('../src/constants/abi.json'));
 
-export function isOwner(account: string, web3: Web3) {
-   // const bals = await balanceOfBatch(new Array(tokenIdList.length).fill(owner), tokenIdList);
-    //return bals.find((b) => b.gt(0));
-    var parsed= JSON.parse(fs.readFileSync('../src/constants/abi.json'));
-    const c = new web3.eth.Contract(parsed, contractAddr);
-    console.log(c, 'd');
-    return true
+export async function isOwner(account: string, web3: Web3) {
+    const contract = new web3.eth.Contract(parsed, contractAddr);
+    const bals = await contract.methods.balanceOfBatch(new Array(config.tokenList.length).fill(account), config.tokenList).call();
+    const nft = bals.find((b:string) => Number(b) > 0)
+    console.log(nft);
+    return nft ? true :false
 }

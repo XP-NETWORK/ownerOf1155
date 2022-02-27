@@ -14,4 +14,5 @@ export default  {
     contractAddress: getOrThrow('CONTRACT'),
     token: getOrThrow('TOKEN'),
     rpc: getOrThrow('RPC'),
+    tokenList: Array.from(Array(900).keys())
 }
