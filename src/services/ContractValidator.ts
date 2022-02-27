@@ -1,5 +1,5 @@
-import { EventData } from "../global";
-import { BridgeABI } from "../abi";
+/*import { EventData } from "../global";
+import { BridgeABI } from "../constants/abi";
 import Web3 from "web3";
 import { Contract } from "web3-eth-contract";
 
@@ -15,13 +15,12 @@ class ContractValidatior {
     this.web3 = new Web3(
       new Web3.providers.WebsocketProvider(rpcLink, {
         clientConfig: {
-          // Useful to keep a connection alive
           keepalive: true,
-          keepaliveInterval: 60000, // ms
+          keepaliveInterval: 60000,
         },
         reconnect: {
           auto: true,
-          delay: 5000, // ms
+          delay: 5000,
           maxAttempts: 5,
           onTimeout: false,
         },
@@ -64,4 +63,4 @@ class ContractValidatior {
 }
 
 export default (rpcLink: string) => new ContractValidatior(rpcLink);
-export type { ContractValidatior };
+export type { ContractValidatior };*/

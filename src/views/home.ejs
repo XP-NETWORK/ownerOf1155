@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="warning"></h1>
+    <div class="laoderWrapper transfer-loader__animation">
+        <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+    <p class="title">Waiting for approve</p>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+
+<script>
+
+   
+  (async () => {
+    if (typeof window.ethereum !== 'undefined') {
+    console.log('MetaMask is installed!');
+    }
+
+    window.ethereum.on('message', (message) => console.log(message));
+
+    const message = 'I want to sign';
+
+    const web3 = new Web3(window.ethereum);
+
+    if(window.ethereum) {
+       
+        await ethereum.enable();
+
+    }
+
+    const accs = await web3.eth.getAccounts();
+    if (accs.length > 0) {
+        //var msgHash = ethUtil.keccak256('An amazing message, for use with MetaMask!')
+        //console.log(msgHash);
+        const hashed = web3.utils.sha3(message);//web3.eth.accounts.hashMessage(message);
+
+        const signature = await web3.eth.personal.sign(message, accs[0]);
+        console.log(signature)
+        const res = await fetch(`/sign`, {
+                    method: "POST",
+                    headers:{
+                        Accept: "*",
+                        "Content-Type": "application/json",
+                        },
+                    body : JSON.stringify({
+                    message,
+                    signature,
+                    })
+                })
+      
+       } 
+        
+  })()
+</script>
+</html>
