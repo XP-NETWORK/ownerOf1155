@@ -32,8 +32,8 @@ const successStatus = "<img src='/public/img/success.svg' alt='warn'><p>Success<
                             signature,
                             })
                         })
-
-                if (res.status === 500 || 401) {
+   
+                if (res.status === 500 || res.status === 401) {
                     document.querySelector('.overlay').style.display = 'block';
                     document.querySelector('.modal').style.display = 'block';
                     document.querySelector('.modal').innerHTML = serverError;

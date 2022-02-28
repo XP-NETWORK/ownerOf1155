@@ -2,7 +2,7 @@ import Web3 from "web3";
 var fs = require('fs');
 import config from "./config";
 const contractAddr = config.contractAddress
-const parsed= JSON.parse(fs.readFileSync('../src/constants/ruven.json'));
+const parsed= JSON.parse(fs.readFileSync('../src/constants/abi.json'));
 
 export async function isOwner(account: string, web3: Web3) {
     try {
