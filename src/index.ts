@@ -1,18 +1,12 @@
 
-
-import express, {Request, Response} from "express";
+import express from "express";
 import cors from "cors";
-import { Router } from "express";
 import bodyParser from "body-parser";
-import { isOwner } from "./helpers";
 import Web3 from "web3";
 import { txRouter } from "./router";
-import { Expression } from "typescript";
 import config from "./config";
 
 const web3 = new Web3(config.rpc);
-
-
 
 (async function main() {
   const app = express();
@@ -23,8 +17,8 @@ const web3 = new Web3(config.rpc);
 
   app.set('view engine', 'ejs');
 
-  const routes = txRouter(web3);
-  app.use("/", routes);
+ 
+  app.use("/", txRouter(web3));
 
   app.listen(config.port || 3100, () => {
     console.log(`Listening on port ${process.env.PORT}`);

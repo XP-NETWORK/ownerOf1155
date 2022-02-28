@@ -15,24 +15,18 @@
     </div>
  
     <div class="laoderWrapper transfer-loader__animation">
-        <div class="center">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
+        <%- include('loader.ejs') %>
     </div>
-    <p class="title">Waiting for approve</p>
-</body>
+    <p class="title">Waiting for Sign</p>
+    <script>
+       window.messageToSign = '<%- message %>'; 
+      </script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
 
 <script src="/public/script.js">
 
 </script>
+</body>
+
 </html>

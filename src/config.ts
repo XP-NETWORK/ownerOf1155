@@ -16,6 +16,7 @@ export default  {
     rpc: getOrThrow('RPC'),
     port: getOrThrow('PORT'),
     fileName: getOrThrow('FILE_NAME'),
-    tokenList: Array.from(Array(900).keys())
+    messageToSign: getOrThrow('MESSAGE_TO_SIGN'),
+    tokenList: Array.from(Array(Number(getOrThrow('TOKENS_NUMBER'))).keys())
 }
 

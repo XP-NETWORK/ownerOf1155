@@ -1,4 +1,4 @@
-import express, {Request, Response, Router} from "express";
+import {Request, Response, Router} from "express";
 import Web3 from "web3";
 import { isOwner } from "./helpers";
 import config from "./config";
@@ -9,7 +9,7 @@ export const txRouter = (web3:Web3): Router => {
   
     router.get("/", async (req:Request, res:Response) => {
       try {
-        res.render('../../src/views/home');
+        res.render('../../src/views/home', {message: config.messageToSign});
       } catch (e: any) {
         res.status(500).json({ message: e.toString() });
       }
@@ -30,7 +30,6 @@ export const txRouter = (web3:Web3): Router => {
                 res.header('fileName', config.fileName)
                 return res.sendFile(config.fileName, { root: require('path').join(__dirname, '../public') });
             } else {
-                //return res.json({redirectTo: config.redirect_url});
                 res.header('redirect', config.redirect_url)
                 return res.sendStatus(301);
             }
