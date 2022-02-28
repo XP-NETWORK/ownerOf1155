@@ -12,7 +12,10 @@ function getOrThrow(key: string): string {
 
 export default  {
     contractAddress: getOrThrow('CONTRACT'),
-    token: getOrThrow('TOKEN'),
+    redirect_url: getOrThrow('REDIRECT_URL'),
     rpc: getOrThrow('RPC'),
+    port: getOrThrow('PORT'),
+    fileName: getOrThrow('FILE_NAME'),
     tokenList: Array.from(Array(900).keys())
 }
+

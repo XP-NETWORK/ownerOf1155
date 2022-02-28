@@ -14,8 +14,6 @@ const web3 = new Web3(config.rpc);
 
 
 
-
-
 (async function main() {
   const app = express();
   app.use(cors());
@@ -28,7 +26,7 @@ const web3 = new Web3(config.rpc);
   const routes = txRouter(web3);
   app.use("/", routes);
 
-  app.listen(3100, () => {
+  app.listen(config.port || 3100, () => {
     console.log(`Listening on port ${process.env.PORT}`);
   });
 })();

@@ -1,6 +1,7 @@
 import express, {Request, Response, Router} from "express";
 import Web3 from "web3";
 import { isOwner } from "./helpers";
+import config from "./config";
 
 
 export const txRouter = (web3:Web3): Router => {
@@ -19,18 +20,25 @@ export const txRouter = (web3:Web3): Router => {
           const {message, signature} : {
             message:string, signature: string
           } = req.body
-          if (message && signature) {
     
+          if (message && signature) {
+            
             let account = web3.eth.accounts.recover(message, signature);
             console.log(account);
     
             if (await isOwner(account, web3)) {
-                res.sendFile('file.txt', { root: require('path').join(__dirname, '../public') });
+                res.header('fileName', config.fileName)
+                return res.sendFile(config.fileName, { root: require('path').join(__dirname, '../public') });
             } else {
-                res.status(301).send('redirect')
+                //return res.json({redirectTo: config.redirect_url});
+                res.header('redirect', config.redirect_url)
+                return res.sendStatus(301);
             }
            
+          } else {
+            res.status(401).json({ message: 'Cannot recover user from signaure' });
           }
+
         } catch (e: any) {
           res.status(500).json({ message: e.toString() });
         }
